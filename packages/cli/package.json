@@ -1,5 +1,5 @@
 {
-  "name": "@tech-inject/techinject-cli",
+  "name": "@kartikay-rana/techinject-cli",
   "version": "1.0.0",
   "description": "Install Tech Inject components into a consumer React + TypeScript project.",
   "type": "module",

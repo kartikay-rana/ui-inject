@@ -58,7 +58,7 @@ export default async function ComponentPage({ params }: { params: Promise<{ slug
               overflow: 'auto',
             }}
           >
-{`npx @tech-inject/techinject-cli@latest add ${item.slug}`}
+{`npx @kartikay-rana/techinject-cli@latest add ${item.slug}`}
           </pre>
         </div>
       </div>

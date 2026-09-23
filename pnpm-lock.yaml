@@ -145,10 +145,6 @@ importers:
         version: 5.9.3
 
   packages/cli:
-    dependencies:
-      '@tech-inject/registry':
-        specifier: workspace:*
-        version: link:../registry
     devDependencies:
       '@tech-inject/db':
         specifier: workspace:*

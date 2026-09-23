@@ -91,13 +91,13 @@ curl -s -o /dev/null -w '%{http_code}\n' https://<api-host>/api/v1/admin/compone
    esbuild (`--bundle`, no external since deps are pure JS), drop the
    `workspace:*` dep, add `prepublishOnly: pnpm build`, and confirm
    `npm pack` lists only `dist/`.
-2. `npm login` → `pnpm --filter @tech-inject/techinject-cli publish` (or
+2. `npm login` → `pnpm --filter @kartikay-rana/techinject-cli publish` (or
    `ci:publish` with provenance enabled in a GitHub Action).
 3. **Verify on a stranger's machine** (no candidate-local files, no localhost):
    ```bash
    npm init -y && npm i react react-dom @radix-ui/react-checkbox
-   npx @tech-inject/techinject-cli add button -r https://<api-host>
-   TECH_INJECT_TOKEN=<session-token> npx @tech-inject/techinject-cli add table -r https://<api-host>
+   npx @kartikay-rana/techinject-cli add button -r https://<api-host>
+   TECH_INJECT_TOKEN=<session-token> npx @kartikay-rana/techinject-cli add table -r https://<api-host>
    # then build/render in that consumer
    ```
 
