@@ -29,10 +29,9 @@ npx ui-injector@latest add sidebar`}</pre>
       <pre className="block">{`TECH_INJECT_TOKEN=... npx ui-injector@latest add sidebar`}</pre>
 
       <h2 className="step">4. Theme</h2>
-      <p style={{ opacity: 0.75 }}>Components reference design tokens:</p>
-      <pre className="block">{`npm i @tech-inject/theme
-// CSS entry
-@import '@tech-inject/theme/styles.css';`}</pre>
+      <p style={{ opacity: 0.75 }}>Every install writes the design tokens into your project — no separate theme package needed. Import it once:</p>
+      <pre className="block">{`import './src/components/theme.css';
+// in your Vite entry (main.tsx) or Next.js root layout`}</pre>
     </main>
   );
 }

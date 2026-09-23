@@ -156,7 +156,7 @@ app.get('/api/v1/components/:slug/install', async (c) => {
     steps: [
       `npx ui-injector@latest add ${row.slug}`,
       row.dependencies.length ? `pnpm add ${row.dependencies.join(' ')}` : 'no extra dependencies required',
-      `themes via @tech-inject/theme (design tokens)`,
+      `themes via a shared theme.css written by the installer`
     ],
     installCommand: `npx ui-injector@latest add ${row.slug}`,
   });

@@ -149,6 +149,9 @@ importers:
       '@tech-inject/db':
         specifier: workspace:*
         version: link:../db
+      '@tech-inject/theme':
+        specifier: workspace:*
+        version: link:../theme
       '@types/node':
         specifier: ^22.10.2
         version: 22.20.4

@@ -1,15 +1,17 @@
 {
   "name": "ui-injector",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Install Tech Inject components into a consumer React + TypeScript project.",
   "type": "module",
   "main": "./dist/index.js",
   "bin": {
     "ui-injector": "./dist/index.js"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.json && node scripts/copy-theme.mjs",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "verify": "node scripts/verify.js",
@@ -17,6 +19,7 @@
   },
   "devDependencies": {
     "@tech-inject/db": "workspace:*",
+    "@tech-inject/theme": "workspace:*",
     "@types/node": "^22.10.2",
     "esbuild": "^0.24.2",
     "typescript": "^5.7.2",

@@ -1,5 +1,8 @@
 import { resolve } from 'node:path';
+import { readFile, writeFile } from 'node:fs/promises';
 import { safeJoin, componentDir, writeBundleToDisk } from './paths.js';
+
+const THEME_CSS_PATH = new URL('./theme.css', import.meta.url);
 
 export const REGISTRY_URL = process.env.TECH_INJECT_REGISTRY_URL ?? 'https://api-git-main-kartikay-ranas-projects.vercel.app';
 export const API = REGISTRY_URL.replace(/\/$/, '');
@@ -40,6 +43,8 @@ export interface InstallResult {
   dir: string;
   files: string[];
   deps: string[];
+  /** absolute path of the shared theme.css the installer also wrote */
+  themeFile: string;
 }
 
 export async function installComponent(slug: string, opts: { cwd?: string; force?: boolean; token?: string } = {}): Promise<InstallResult> {
@@ -62,10 +67,13 @@ export async function installComponent(slug: string, opts: { cwd?: string; force
     stripped[rel.startsWith(prefix) ? rel.slice(prefix.length) : rel] = content;
   }
   const files = await writeBundleToDisk(dir, stripped, manifest);
+  const themeFile = resolve(base, 'theme.css');
+  await writeFile(themeFile, await readFile(THEME_CSS_PATH, 'utf8'), 'utf8');
   return {
     slug,
     dir,
-    files,
+    files: [...files, 'theme.css'],
     deps: result.component.dependencies,
+    themeFile,
   };
 }

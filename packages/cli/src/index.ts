@@ -96,10 +96,14 @@ async function main() {
   void deps;
   await writeFile(resolve(cwd, 'techinject.json'), JSON.stringify({ components: Object.keys(manifest), [result.slug]: result.deps }, null, 2) + '\n', 'utf8');
 
-  console.log('\nDone. Import it from your components folder:\n');
+  console.log('\nDone. Shared theme + component files written.\n');
+  console.log(`Import the theme once in your app entry (Vite: src/main.tsx):`);
+  console.log(`  import './components/theme.css';`);
   const entry = result.files.find((f) => f.endsWith('.tsx') && !f.endsWith('.story.tsx'));
   if (entry) {
-    console.log(`  import { ${entry.split('/').pop()!.replace('.tsx', '')} } from './src/components/${slug}/${entry.split('/').pop()!}';`);
+    const importName = entry.split('/').pop()!.replace(/\.(tsx|ts|js)$/, '');
+    console.log(`Then import the component anywhere in src/ (e.g. src/main.tsx):`);
+    console.log(`  import { ${importName} } from './components/${slug}/${importName}.js';`);
   }
 }
 
