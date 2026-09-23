@@ -2,6 +2,7 @@
 
 import { resolve } from 'node:path';
 import { readFile, writeFile } from 'node:fs/promises';
+import { createRequire } from 'node:module';
 import { installComponent, listComponents } from './install.js';
 
 const usage = `Tech Inject CLI
@@ -25,6 +26,42 @@ async function tryReadPackageJson(cwd: string) {
     return JSON.parse(await readFile(resolve(cwd, 'package.json'), 'utf8')) as Record<string, unknown>;
   } catch {
     return null;
+  }
+}
+
+/**
+ * Preflight: surface the two most common consumer-setup mistakes with an exact
+ * fix, instead of letting TypeScript print confusing TS1295/TS1287 errors.
+ * Never blocks the install — the reported config is a diagnosis, not ours.
+ */
+async function preflight(cwd: string, pkg: Record<string, unknown> | null) {
+  const req = createRequire(resolve(cwd, 'noop.js'));
+  try {
+    req.resolve('react');
+  } catch {
+    console.warn('\n[preflight] react is not installed — components need React.');
+    console.warn('  Run:  npm i react react-dom');
+  }
+  let tsconfig: string | null = null;
+  try {
+    tsconfig = await readFile(resolve(cwd, 'tsconfig.json'), 'utf8');
+  } catch {
+    // no tsconfig — nothing to diagnose
+  }
+  const isEsModule = pkg?.type === 'module';
+  const conflicting =
+    tsconfig != null &&
+    !isEsModule &&
+    /"verbatimModuleSyntax"\s*:\s*true/.test(tsconfig) &&
+    /"(module|moduleResolution)"\s*:\s*"[^"]*(node16|nodenext)[^"]*"/.test(tsconfig);
+  if (conflicting) {
+    console.warn('\n[preflight] tsconfig uses CommonJS ("type" unset/"commonjs") + "verbatimModuleSyntax": true,');
+    console.warn('  which makes ESM component files error with TS1295/TS1287.');
+    console.warn('  The installer scopes src/components/ as ESM (src/components/package.json: {"type":"module"}), so the');
+    console.warn('  component files are format-safe. The file that IMPORTS a component must also be ESM — fix one of:');
+    console.warn('    1. "type": "module" in your package.json, or');
+    console.warn('    2. "verbatimModuleSyntax": false in tsconfig.json, or');
+    console.warn('    3. import the component from an ESM-scoped file (nearest package.json already "type": "module").');
   }
 }
 
@@ -71,6 +108,7 @@ async function main() {
     console.error('no package.json found — run this from a React + TypeScript project root');
     process.exit(1);
   }
+  await preflight(cwd, pkg);
 
   const result = await installComponent(slug, { cwd, force });
 

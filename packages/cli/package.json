@@ -1,6 +1,6 @@
 {
   "name": "ui-injector",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Install Tech Inject components into a consumer React + TypeScript project.",
   "type": "module",
   "main": "./dist/index.js",

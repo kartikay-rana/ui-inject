@@ -69,10 +69,12 @@ export async function installComponent(slug: string, opts: { cwd?: string; force
   const files = await writeBundleToDisk(dir, stripped, manifest);
   const themeFile = resolve(base, 'theme.css');
   await writeFile(themeFile, await readFile(THEME_CSS_PATH, 'utf8'), 'utf8');
+  const scopePkg = resolve(base, 'package.json');
+  await writeFile(scopePkg, JSON.stringify({ type: 'module' }, null, 2) + '\n', 'utf8');
   return {
     slug,
     dir,
-    files: [...files, 'theme.css'],
+    files: [...files, 'theme.css', 'package.json'],
     deps: result.component.dependencies,
     themeFile,
   };

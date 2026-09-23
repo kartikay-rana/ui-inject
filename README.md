@@ -157,6 +157,12 @@ TECH_INJECT_TOKEN=<session-token> npx ui-injector add table -r https://api.your-
 npx ui-injector add button -r https://api.your-domain.com
 ```
 
+Consumer requirements (React + TypeScript):
+
+- Install the components' peer dependency: `npm i react react-dom` (+ `@types/react`).
+- The installer writes into `src/components/`. It also writes `src/components/package.json` (`{"type":"module"}`) plus the shared `theme.css`, so the installed files stay ESM and self-contained even inside a CommonJS project.
+- ESM assumed for the *importing* file, which is the norm in React apps (Vite/Next). If `tsconfig.json` uses `verbatimModuleSyntax` and your root `package.json` has no `"type": "module"`, the CLI prints an exact fix at install time; the one-line change is `"type": "module"`.
+
 The agent prompt (`GET /api/v1/components/:slug/agent-prompt`) tells the agent to
 use the token via the `TECH_INJECT_TOKEN` environment variable and never embeds a
 credential (`packages/registry/src/agent-prompt.ts`).
