@@ -1,0 +1,28 @@
+/* Win Probability — 17-segment LED meter, danger→warning→success→track. */
+.ti-meter {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  height: 14px;
+  padding: 0 2px;
+  border-radius: 2px;
+  background: color-mix(in oklab, var(--foreground) 8%, transparent);
+}
+.ti-meter__seg {
+  height: 10px;
+  min-width: 1px;
+  flex: 1;
+  border-radius: 1px;
+}
+.ti-meter__seg--off {
+  background: var(--track);
+}
+.ti-meter__seg--low {
+  background: var(--danger);
+}
+.ti-meter__seg--mid {
+  background: var(--warning);
+}
+.ti-meter__seg--high {
+  background: var(--success);
+}

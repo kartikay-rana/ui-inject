@@ -1,0 +1,19 @@
+{
+  "name": "@tech-inject/theme",
+  "version": "1.0.0",
+  "private": true,
+  "exports": {
+    ".": "./src/index.js",
+    "./styles.css": "./src/theme.css",
+    "./tailwind-preset": "./src/tailwind-preset.cjs"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2",
+    "vitest": "^3.0.5"
+  }
+}

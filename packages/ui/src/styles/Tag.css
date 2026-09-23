@@ -1,0 +1,65 @@
+/* Tag / badge — 10 variants driven by the reference token palette. */
+.ti-tag {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 8px;
+  border-radius: 999px;
+  border: 1px solid var(--tag-neutral-border);
+  background: var(--tag-neutral-bg);
+  color: var(--tag-neutral-text);
+  font-size: 14px;
+  line-height: 1;
+  white-space: nowrap;
+}
+.ti-tag--green {
+  background: var(--tag-green-bg);
+  border-color: var(--tag-green-border);
+  color: var(--tag-green-text);
+}
+.ti-tag--blue {
+  background: var(--tag-blue-bg);
+  border-color: var(--tag-blue-border);
+  color: var(--tag-blue-text);
+}
+.ti-tag--purple {
+  background: var(--tag-purple-bg);
+  border-color: var(--tag-purple-border);
+  color: var(--tag-purple-text);
+}
+.ti-tag--moss {
+  background: var(--tag-moss-bg);
+  border-color: var(--tag-moss-border);
+  color: var(--tag-moss-text);
+}
+.ti-tag--red {
+  background: var(--tag-red-bg);
+  border-color: var(--tag-red-border);
+  color: var(--tag-red-text);
+}
+.ti-tag--orange {
+  background: var(--tag-orange-bg);
+  border-color: var(--tag-orange-border);
+  color: var(--tag-orange-text);
+}
+.ti-tag--amber {
+  background: var(--tag-amber-bg);
+  border-color: var(--tag-amber-border);
+  color: var(--tag-amber-text);
+}
+.ti-tag--teal {
+  background: var(--tag-teal-bg);
+  border-color: var(--tag-teal-border);
+  color: var(--tag-teal-text);
+}
+.ti-tag--yellow {
+  background: var(--tag-yellow-bg);
+  border-color: var(--tag-yellow-border);
+  color: var(--tag-yellow-text);
+}
+
+.ti-tag--pill {
+  height: 20px;
+  padding: 0 6px;
+  font-size: 12px;
+}

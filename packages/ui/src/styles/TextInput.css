@@ -1,0 +1,61 @@
+/* Text input + search affordance. */
+.ti-input {
+  height: 30px;
+  width: 100%;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid var(--input);
+  background: var(--secondary);
+  color: var(--foreground);
+  font: inherit;
+  font-size: 14px;
+  transition:
+    border-color var(--duration) var(--ease-power3-out),
+    box-shadow var(--duration) var(--ease-power3-out);
+}
+.ti-input::placeholder {
+  color: var(--muted-foreground);
+}
+.ti-input:focus-visible {
+  outline: none;
+  border-color: var(--ring);
+  box-shadow: 0 0 0 2px color-mix(in oklab, var(--ring) 60%, transparent);
+}
+.ti-input:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.ti-search {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 30px;
+  padding: 0 6px 0 12px;
+  border-radius: 999px;
+  background: var(--secondary);
+  color: var(--muted-foreground);
+  box-shadow: var(--shadow-raised);
+  font-size: 12px;
+  cursor: pointer;
+  border: 0;
+}
+.ti-search:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px color-mix(in oklab, var(--ring) 60%, transparent);
+}
+.ti-search:hover {
+  background: var(--secondary-hover);
+}
+.ti-search__kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 18px;
+  padding: 0 6px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--muted);
+  color: var(--subtle);
+  font-size: 11px;
+}

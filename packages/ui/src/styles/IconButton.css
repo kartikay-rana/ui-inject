@@ -1,0 +1,43 @@
+/* Icon button / ghost row action — 24–30px round controls. */
+.ti-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--secondary);
+  color: var(--foreground);
+  cursor: pointer;
+  box-shadow: var(--shadow-raised);
+  transition:
+    background-color var(--duration) var(--ease-power3-out),
+    box-shadow var(--duration) var(--ease-power3-out),
+    color var(--duration) var(--ease-power3-out);
+}
+.ti-icon-btn:hover {
+  background: var(--muted);
+}
+.ti-icon-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px color-mix(in oklab, var(--ring) 60%, transparent);
+}
+.ti-icon-btn:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.ti-icon-btn--ghost {
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  box-shadow: none;
+}
+.ti-icon-btn--ghost:hover {
+  background: color-mix(in oklab, var(--foreground) 6%, transparent);
+}
+
+.ti-icon-btn svg {
+  flex: none;
+}

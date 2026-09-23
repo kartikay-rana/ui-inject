@@ -1,0 +1,127 @@
+/**
+ * Sales CRM reference — design tokens (extracted verbatim from
+ * https://sales-crm-kargulstudio.vercel.app/)
+ *
+ * These are the single source of truth for colour / radius / elevation /
+ * motion. Every app and every shipped component reads these variables — nothing
+ * hardcodes a colour (DRY, answer #2).
+ */
+:root {
+  color-scheme: dark;
+
+  /* radius */
+  --radius: 0.5rem;
+
+  /* surfaces / text */
+  --background: #161616;
+  --foreground: #f9fbff;
+  --card: #1b1d20;
+  --card-foreground: #f9fbff;
+  --popover: #161616;
+  --popover-foreground: #f9fbff;
+
+  /* brand */
+  --primary: #4124fb;
+  --primary-foreground: #f9fbff;
+  --primary-hover: #4b30ff;
+
+  /* neutral surfaces */
+  --secondary: #1e1e1e;
+  --secondary-foreground: #f9fbff;
+  --secondary-hover: #333333;
+  --muted: #2a2a2a;
+  --muted-foreground: #7f7f7f;
+  --accent: #2a2a2a;
+  --accent-foreground: #f9fbff;
+
+  /* lines / focus */
+  --border: #232323;
+  --input: #393939;
+  --ring: #676767;
+  --line-strong: #393939;
+  --subtle: #676767;
+  --faint: #454545;
+  --soft: #a4a4a4;
+  --chip: #cfcfcf;
+  --icon: #d0d4dd;
+
+  /* status */
+  --destructive: #f97373;
+  --danger: #f97373;
+  --success: #22c55e;
+  --warning: #fbbf24;
+  --trend: #00b562;
+  --trend-muted: #395e4d;
+  --track: #3a3a3a;
+  --status: #16c89e;
+
+  /* sidebar */
+  --sidebar: #171717;
+  --sidebar-foreground: #7f7f7f;
+  --sidebar-primary: #2a2a2a;
+  --sidebar-primary-foreground: #f9fbff;
+  --sidebar-accent: #181818;
+  --sidebar-accent-foreground: #f9fbff;
+  --sidebar-border: #232323;
+  --sidebar-ring: #676767;
+  --sidebar-width: 254px;
+
+  /* checkbox / control fill */
+  --check-fill: #ffdb4b;
+  --avatar-fallback: #f2f2f2;
+
+  /* tag palette (bg / border / text) */
+  --tag-blue-bg: #1d2b3e;
+  --tag-blue-border: #23354c;
+  --tag-blue-text: #bfdbfe;
+  --tag-purple-bg: #231f3a;
+  --tag-purple-border: #4b437b;
+  --tag-purple-text: #b7aee9;
+  --tag-green-bg: #1f3a2d;
+  --tag-green-border: #275137;
+  --tag-green-text: #b1ebc5;
+  --tag-moss-bg: #23451d;
+  --tag-moss-border: #2e5029;
+  --tag-moss-text: #b1ebc5;
+  --tag-red-bg: #3e1d1e;
+  --tag-red-border: #4c2324;
+  --tag-red-text: #febfc6;
+  --tag-orange-bg: #3e291d;
+  --tag-orange-border: #764d35;
+  --tag-orange-text: #eeb390;
+  --tag-amber-bg: #31221b;
+  --tag-amber-border: #6c4830;
+  --tag-amber-text: #fed7aa;
+  --tag-teal-bg: #102a27;
+  --tag-teal-border: #3b6149;
+  --tag-teal-text: #22c55e;
+  --tag-yellow-bg: #33301a;
+  --tag-yellow-border: #5a5228;
+  --tag-yellow-text: #fde68a;
+  --tag-neutral-bg: #2a2a2a;
+  --tag-neutral-border: #363636;
+  --tag-neutral-text: #cfcfcf;
+
+  /* elevation (raised button recipe from the reference) */
+  --shadow-raised: 0px 0px 0px 1px rgba(0, 0, 0, 0.4), inset 0px 1px 0px 0px rgba(255, 255, 255, 0.1),
+    inset 0px 0px 0px 1px rgba(255, 255, 255, 0.06);
+  --shadow-primary: 0px 4px 4px 0px rgba(42, 42, 42, 0.32), 0px 0px 0px 1px #0e0e0e,
+    inset 0px 4px 6px 0px rgba(255, 255, 255, 0.2), inset 0px 0px 0px 1px rgba(255, 255, 255, 0.15),
+    inset 0px -8px 14px 0px rgba(0, 0, 0, 0.15);
+  --shadow-chip: 0px 0px 0px 0.5px #0e0e0e;
+  --shadow-overlay: 0px 16px 40px 0px #00000080, 0px 0px 0px 1px #0e0e0e;
+
+  /* motion */
+  --ease-power3-out: cubic-bezier(0.25, 1, 0.5, 1);
+  --duration: 150ms;
+}
+
+/* baseline used both by the apps and by sandboxed component previews */
+.ti-base {
+  font-family:
+    "Geist", "Geist Fallback", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+  background-color: var(--background);
+  color: var(--foreground);
+}

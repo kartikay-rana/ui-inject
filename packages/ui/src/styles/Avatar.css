@@ -1,0 +1,38 @@
+/* Avatar — 20px image chip w/ 0.5px white ring + optional status dot. */
+.ti-avatar {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex: none;
+  border-radius: 999px;
+  overflow: hidden;
+  outline: 1px solid color-mix(in oklab, var(--foreground) 10%, transparent);
+  outline-offset: -1px;
+  background: var(--avatar-fallback);
+  color: #161616;
+  font-size: 11px;
+  font-weight: 500;
+}
+.ti-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.ti-avatar--lg {
+  width: 30px;
+  height: 30px;
+  font-size: 13px;
+}
+.ti-avatar__dot {
+  position: absolute;
+  right: -1px;
+  bottom: -1px;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--status);
+  border: 2px solid var(--card);
+}

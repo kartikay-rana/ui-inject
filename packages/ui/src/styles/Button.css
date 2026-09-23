@@ -1,0 +1,79 @@
+/* Button — Sales CRM reference (raised recipe: outer 1px + inset highlights). */
+.ti-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 30px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--foreground);
+  cursor: pointer;
+  transition:
+    background-color var(--duration) var(--ease-power3-out),
+    box-shadow var(--duration) var(--ease-power3-out),
+    color var(--duration) var(--ease-power3-out);
+}
+.ti-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px color-mix(in oklab, var(--ring) 60%, transparent);
+}
+.ti-btn:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.ti-btn--raised {
+  background: var(--secondary);
+  box-shadow: var(--shadow-raised);
+}
+.ti-btn--raised:hover {
+  background: var(--secondary-hover);
+}
+
+.ti-btn--primary {
+  background: var(--primary);
+  color: var(--primary-foreground);
+  box-shadow: var(--shadow-primary);
+}
+.ti-btn--primary:hover {
+  background: var(--primary-hover);
+}
+
+.ti-btn--ghost {
+  background: transparent;
+  box-shadow: none;
+  color: var(--foreground);
+}
+.ti-btn--ghost:hover {
+  background: color-mix(in oklab, var(--foreground) 6%, transparent);
+}
+
+.ti-btn--sm {
+  height: 24px;
+  padding: 0 10px;
+  font-size: 12px;
+}
+.ti-btn--md {
+  height: 30px;
+  padding: 0 16px;
+}
+
+.ti-btn__spinner {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  border: 1.5px solid color-mix(in oklab, currentColor 30%, transparent);
+  border-top-color: currentColor;
+  animation: ti-spin 0.7s linear infinite;
+}
+@keyframes ti-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

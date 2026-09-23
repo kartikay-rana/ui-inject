@@ -1,0 +1,52 @@
+/* Tabs — underline active state on the foreground border, dual-height trick. */
+.ti-tabs-list {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid var(--border);
+}
+.ti-tabs-trigger {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 38px;
+  padding: 0 14px;
+  border: 0;
+  background: transparent;
+  color: var(--subtle);
+  font: inherit;
+  font-size: 12px;
+  line-height: 1;
+  cursor: pointer;
+  transition: color var(--duration) var(--ease-power3-out);
+}
+.ti-tabs-trigger::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: transparent;
+}
+.ti-tabs-trigger:hover {
+  color: var(--soft);
+}
+.ti-tabs-trigger:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 2px color-mix(in oklab, var(--ring) 60%, transparent);
+  border-radius: 6px;
+}
+.ti-tabs-trigger[data-state='active'] {
+  color: var(--foreground);
+  font-weight: 500;
+}
+.ti-tabs-trigger[data-state='active']::after {
+  background: var(--foreground);
+}
+.ti-tabs-trigger:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+.ti-tabs-content:focus-visible {
+  outline: none;
+}

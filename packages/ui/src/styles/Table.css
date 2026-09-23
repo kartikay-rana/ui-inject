@@ -1,0 +1,48 @@
+/* Table — grid data table: checkbox col support, tabular numerals, hover/selected rows.
+   grid-template-columns is supplied inline by the Table component (column config). */
+.ti-table {
+  display: grid;
+  width: 100%;
+  border-collapse: collapse;
+}
+.ti-table__header {
+  display: contents;
+}
+.ti-table__header .ti-table__cell {
+  height: 38px;
+  color: var(--subtle);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1;
+  border-bottom: 1px solid var(--border);
+}
+.ti-table__row {
+  display: contents;
+}
+.ti-table__row .ti-table__cell {
+  border-bottom: 1px solid var(--border);
+  transition: background-color 150ms var(--ease-power3-out);
+}
+.ti-table__row:hover .ti-table__cell {
+  background: color-mix(in oklab, var(--card) 60%, transparent);
+}
+.ti-table__row--active .ti-table__cell {
+  background: var(--card);
+  border-bottom-color: var(--card);
+}
+.ti-table__cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 42px;
+  padding: 0 12px;
+  font-size: 14px;
+  line-height: 1.15;
+  color: var(--foreground);
+}
+.ti-table__cell--num {
+  font-variant-numeric: tabular-nums;
+}
+.ti-table__cell--muted {
+  color: var(--muted-foreground);
+}

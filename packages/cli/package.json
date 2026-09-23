@@ -1,0 +1,27 @@
+{
+  "name": "@tech-inject/techinject-cli",
+  "version": "1.0.0",
+  "description": "Install Tech Inject components into a consumer React + TypeScript project.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "bin": {
+    "techinject-cli": "./dist/index.js"
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "verify": "node scripts/verify.js"
+  },
+  "dependencies": {
+    "@tech-inject/registry": "workspace:*"
+  },
+  "devDependencies": {
+    "@tech-inject/db": "workspace:*",
+    "@types/node": "^22.10.2",
+    "esbuild": "^0.24.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "tech-inject",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Tech Inject design theme library \u2014 reusable component system (catalogue + admin + API + CLI)",
+  "packageManager": "pnpm@11.23.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "check": "pnpm build && pnpm typecheck && pnpm test && pnpm --filter @tech-inject/techinject-cli verify",
+    "format": "prettier --write \"**/*.{ts,tsx,json,md,css}\"",
+    "db:generate": "pnpm --filter @tech-inject/db generate",
+    "db:push": "pnpm --filter @tech-inject/db push",
+    "db:seed": "pnpm --filter @tech-inject/db seed",
+    "verify:consumer": "pnpm --filter @tech-inject/cli verify"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "prettier": "^3.4.2",
+    "turbo": "^2.3.3",
+    "typescript": "^5.7.2"
+  }
+}

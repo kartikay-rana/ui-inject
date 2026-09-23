@@ -1,0 +1,124 @@
+/* Sidebar — 254px rail, grouped nav w/ eyebrows, count chips, active pill, footer buttons. */
+.ti-sidebar {
+  display: flex;
+  flex-direction: column;
+  width: var(--sidebar-width);
+  flex: none;
+  border-right: 1px solid var(--sidebar-border);
+  background: var(--sidebar);
+  color: var(--sidebar-foreground);
+  overflow: hidden;
+}
+.ti-sidebar__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  border-bottom: 1px solid var(--sidebar-border);
+  background: var(--sidebar-accent);
+}
+.ti-sidebar__title {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--sidebar-accent-foreground);
+  letter-spacing: -0.01em;
+}
+.ti-sidebar__caption {
+  font-size: 12px;
+  line-height: 1;
+  color: var(--subtle);
+}
+.ti-sidebar__body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px;
+  scrollbar-width: none;
+}
+.ti-sidebar__body::-webkit-scrollbar {
+  display: none;
+}
+.ti-sidebar__group + .ti-sidebar__group {
+  margin-top: 16px;
+}
+.ti-sidebar__eyebrow {
+  display: block;
+  padding: 4px 8px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1;
+  color: var(--faint);
+}
+.ti-sidebar__item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 30px;
+  width: 100%;
+  padding: 0 8px;
+  margin: 2px 0;
+  border: 0;
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--sidebar-foreground);
+  font: inherit;
+  font-size: 14px;
+  line-height: 1;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background-color var(--duration) var(--ease-power3-out),
+    box-shadow var(--duration) var(--ease-power3-out),
+    color var(--duration) var(--ease-power3-out);
+}
+.ti-sidebar__item:hover {
+  color: var(--foreground);
+}
+.ti-sidebar__item:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 2px color-mix(in oklab, var(--ring) 60%, transparent);
+}
+.ti-sidebar__item .ti-sidebar__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  flex: none;
+}
+.ti-sidebar__item--active {
+  background: var(--sidebar-primary);
+  color: var(--sidebar-primary-foreground);
+  box-shadow: var(--shadow-raised);
+}
+.ti-sidebar__label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ti-sidebar__count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 16px;
+  min-width: 24px;
+  padding: 0 4px;
+  border-radius: 999px;
+  border: 0.5px solid #414141;
+  background: var(--muted);
+  color: var(--chip);
+  box-shadow: var(--shadow-chip);
+  font-size: 11px;
+}
+.ti-sidebar__icon {
+  flex: none;
+  color: currentColor;
+}
+.ti-sidebar__footer {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px;
+  border-top: 1px solid var(--sidebar-border);
+}

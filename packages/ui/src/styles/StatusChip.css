@@ -1,0 +1,23 @@
+/* Status chip — header status pill w/ live dot (teal). */
+.ti-status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 22px;
+  padding: 0 9px;
+  border-radius: 999px;
+  border: 1px solid #363636;
+  background: var(--muted);
+  color: var(--foreground);
+  font-size: 12px;
+  line-height: 1;
+}
+.ti-status-chip__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--status);
+}
+.ti-status-chip--danger .ti-status-chip__dot {
+  background: var(--danger);
+}

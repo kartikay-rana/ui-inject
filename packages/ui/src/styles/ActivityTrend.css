@@ -1,0 +1,16 @@
+/* Activity trend — 14 vertical bars, bright/dim green tones. */
+.ti-trend {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 1px;
+  height: 14px;
+}
+.ti-trend__bar {
+  width: 4px;
+  flex: none;
+  border-radius: 1px;
+  background: var(--trend);
+}
+.ti-trend__bar--muted {
+  background: var(--trend-muted);
+}

@@ -1,0 +1,29 @@
+# deps
+node_modules/
+.pnpm-store/
+
+# builds
+dist/
+build/
+.turbo/
+.next/
+out/
+*.tsbuildinfo
+
+# env / secrets
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# database
+drizzle/
+*.db
+
+# misc
+.DS_Store
+coverage/
+tmp/
+docs-screenshots/*-aspect-lg.png
+playwright-report/
+test-results/
