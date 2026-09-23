@@ -84,21 +84,21 @@ curl -s -o /dev/null -w '%{http_code}\n' https://<api-host>/api/v1/admin/compone
 
 ## 5. CLI (npm publish — `NPM_TOKEN` required)
 
-1. **Prep before publish (not yet done):** `packages/cli/package.json` currently
-   depends on `@tech-inject/registry: workspace:*`, which npm resolves from the
-   registry, not the workspace. Publish readiness = bundle the pure
-   `registry` helpers (zod + audit + agent-prompt) into the CLI `dist` via
-   esbuild (`--bundle`, no external since deps are pure JS), drop the
-   `workspace:*` dep, add `prepublishOnly: pnpm build`, and confirm
-   `npm pack` lists only `dist/`.
-2. `npm login` → `pnpm --filter @kartikay-rana/techinject-cli publish` (or
-   `ci:publish` with provenance enabled in a GitHub Action).
+1. **Publish prep (done):** the CLI is self-contained (no registry pkg — it
+   fetches live from `REGISTRY_URL`); unused `@tech-inject/registry` dep
+   dropped, default registry points at the deployed API, and
+   `prepublishOnly: pnpm build` is set. `npm pack` lists only `dist/`.
+2. Published `@kartikay-rana/techinject-cli@1.0.0` (scoped to the author's npm
+   username — the `@tech-inject` scope is not ownable on npm). Bump version +
+   `npm publish --access public` with a granular token that has "bypass 2FA"
+   set; note the registry takes a few minutes to serve the fresh packument.
 3. **Verify on a stranger's machine** (no candidate-local files, no localhost):
    ```bash
    npm init -y && npm i react react-dom @radix-ui/react-checkbox
    npx @kartikay-rana/techinject-cli add button -r https://<api-host>
    TECH_INJECT_TOKEN=<session-token> npx @kartikay-rana/techinject-cli add table -r https://<api-host>
-   # then build/render in that consumer
+   # then build/render in that consumer (the CLI defaults to the deployed API,
+   # so `-r` is optional)
    ```
 
 ## 6. Docs to update after deploy
