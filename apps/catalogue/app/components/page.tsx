@@ -1,10 +1,10 @@
 import Link from 'next/link';
-import { apiBase, listComponents } from '../lib/api';
-import { CategoryGrid } from '../components/ComponentGrid';
+import { apiBase, listComponents } from '../../lib/api';
+import { CategoryGrid } from '../../components/ComponentGrid';
 
 export const dynamic = 'force-dynamic';
 
-export default async function Home() {
+export default async function ComponentsPage() {
   let items: Awaited<ReturnType<typeof listComponents>> = [];
   let error: string | null = null;
   try {
@@ -12,8 +12,6 @@ export default async function Home() {
   } catch (e) {
     error = e instanceof Error ? e.message : String(e);
   }
-
-  const freeCount = items.filter((i) => i.accessLevel === 'free').length;
 
   return (
     <main className="min-h-screen" style={{ maxWidth: 1120, margin: '0 auto', padding: '2rem 1.5rem 5rem' }}>
@@ -27,20 +25,18 @@ export default async function Home() {
           </div>
         </div>
         <nav className="flex items-center gap-3" style={{ fontSize: '0.9rem' }}>
-          <Link href="/components" style={{ opacity: 0.85 }}>
-            Components
+          <Link href="/" style={{ opacity: 0.85 }}>
+            Home
           </Link>
           <Link href="/get-started">Get Started</Link>
         </nav>
       </header>
 
-      <section style={{ padding: '4rem 0 2.5rem', maxWidth: 680 }}>
-        <h1 style={{ fontSize: '2.4rem', lineHeight: 1.15, margin: 0 }}>
-          A themed component library for the Sales CRM interface.
-        </h1>
-        <p style={{ opacity: 0.75, marginTop: '0.9rem', fontSize: '1.05rem' }}>
-          {freeCount} components are free forever; the rest unlock with a premium account. Every component ships with a live
-          preview, copy-able source and an AI-agent prompt.
+      <section style={{ padding: '3rem 0 2rem' }}>
+        <h1 style={{ fontSize: '1.9rem', margin: 0 }}>Components</h1>
+        <p style={{ opacity: 0.75, maxWidth: 640, margin: '0.6rem 0 0' }}>
+          Every snippet mirrors a cell of the reference Sales CRM screen. Premium components require a
+          <code> TECH_INJECT_TOKEN</code> to preview and install.
         </p>
       </section>
 
