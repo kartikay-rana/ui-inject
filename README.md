@@ -1,4 +1,4 @@
-# Tech Inject — Design Theme Library
+# UI Inject — Design Theme Library
 
 A reusable, documented and dependable component system built from the **Sales CRM**
 visual reference. Developers browse and install free/premium components through a
