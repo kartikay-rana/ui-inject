@@ -12,10 +12,8 @@
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "verify": "node scripts/verify.js"
-  },
-  "dependencies": {
-    "@tech-inject/registry": "workspace:*"
+    "verify": "node scripts/verify.js",
+    "prepublishOnly": "pnpm build"
   },
   "devDependencies": {
     "@tech-inject/db": "workspace:*",

@@ -1,7 +1,7 @@
 import { resolve } from 'node:path';
 import { safeJoin, componentDir, writeBundleToDisk } from './paths.js';
 
-export const REGISTRY_URL = process.env.TECH_INJECT_REGISTRY_URL ?? 'https://localhost:3001';
+export const REGISTRY_URL = process.env.TECH_INJECT_REGISTRY_URL ?? 'https://api-git-main-kartikay-ranas-projects.vercel.app';
 export const API = REGISTRY_URL.replace(/\/$/, '');
 
 export interface SourceResult {
