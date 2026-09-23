@@ -28,12 +28,12 @@ packages/cli     ui-injector — npx installer
 > env vars and verification commands are in `docs/DEPLOY.md`. URLs below are
 > placeholders to be filled the moment a host is available.
 
-| Surface | URL (pending) |
+| Surface | URL (live) |
 |---|---|
-| Catalogue | `https://<catalogue>.vercel.app` |
-| Admin | `https://<admin>.vercel.app` |
-| API | `https://<api>.vercel.app` (one `hono/vercel` function in `apps/api`)
-| Repo | `<git-repo-url>` |
+| Catalogue | `https://api-5eps.vercel.app` |
+| Admin | `https://ui-inject-admin.vercel.app` |
+| API | `https://api-git-main-kartikay-ranas-projects.vercel.app` (one `hono/vercel` function in `apps/api`) |
+| Repo | `https://github.com/kartikay-rana/ui-inject` |
 
 ## Component inventory
 
