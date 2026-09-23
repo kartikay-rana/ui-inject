@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { listComponents } from '../lib/api';
+import { apiBase, listComponents } from '../lib/api';
 
 export const dynamic = 'force-dynamic';
 
@@ -56,7 +56,7 @@ export default async function Home() {
 
       {error && (
         <div className="alert" style={{ border: '1px solid #7a1f1f', borderRadius: 8, padding: '0.9rem 1rem', color: '#ff9d9d' }}>
-          Catalogue API unreachable: {error}. Start it with <code>pnpm --filter @tech-inject/api dev</code>.
+          Catalogue API unreachable: {error} (API={apiBase()}). Start it with <code>pnpm --filter @tech-inject/api dev</code>.
         </div>
       )}
 

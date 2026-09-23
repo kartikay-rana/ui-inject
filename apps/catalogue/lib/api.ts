@@ -1,5 +1,9 @@
 const API = (process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3001').replace(/\/$/, '');
 
+export function apiBase(): string {
+  return API;
+}
+
 export interface ComponentMeta {
   slug: string;
   name: string;
