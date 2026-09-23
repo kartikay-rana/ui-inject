@@ -7,9 +7,9 @@ import { installComponent, listComponents } from './install.js';
 const usage = `Tech Inject CLI
 
 Usage:
-  techinject-cli add <slug> [--force] [--registry=<url>]
-  techinject-cli list
-  techinject-cli --help
+  ui-injector add <slug> [--force] [--registry=<url>]
+  ui-injector list
+  ui-injector --help
 
 Env:
   TECH_INJECT_TOKEN  premium access token (from the catalogue / API)
@@ -60,7 +60,7 @@ async function main() {
 
   const slug = argv[1];
   if (!slug) {
-    console.error('missing slug — use: techinject-cli add <slug>');
+    console.error('missing slug — use: ui-injector add <slug>');
     process.exit(1);
   }
 

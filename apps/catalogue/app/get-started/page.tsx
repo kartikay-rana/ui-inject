@@ -15,18 +15,18 @@ export default function GetStarted() {
       </p>
 
       <h2 className="step">1. Install the CLI</h2>
-      <pre className="block">{`npx @kartikay-rana/techinject-cli@latest --help`}</pre>
+      <pre className="block">{`npx ui-injector@latest --help`}</pre>
 
       <h2 className="step">2. Add a component</h2>
-      <pre className="block">{`npx @kartikay-rana/techinject-cli@latest add button
-npx @kartikay-rana/techinject-cli@latest add sidebar`}</pre>
+      <pre className="block">{`npx ui-injector@latest add button
+npx ui-injector@latest add sidebar`}</pre>
 
       <h2 className="step">3. Premium access</h2>
       <p style={{ opacity: 0.75 }}>
         Log in on any premium component page (try <Link href="/components/sidebar">sidebar</Link>) and copy the token, or set
         it in your environment:
       </p>
-      <pre className="block">{`TECH_INJECT_TOKEN=... npx @kartikay-rana/techinject-cli@latest add sidebar`}</pre>
+      <pre className="block">{`TECH_INJECT_TOKEN=... npx ui-injector@latest add sidebar`}</pre>
 
       <h2 className="step">4. Theme</h2>
       <p style={{ opacity: 0.75 }}>Components reference design tokens:</p>

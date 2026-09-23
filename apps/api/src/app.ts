@@ -132,7 +132,7 @@ app.get('/api/v1/components/:slug/agent-prompt', async (c) => {
   return c.text(
     buildAgentPrompt(row, {
       registryUrl: config().apiBaseUrl,
-      installCommand: `npx @kartikay-rana/techinject-cli@latest add ${row.slug}`,
+      installCommand: `npx ui-injector@latest add ${row.slug}`,
     })
   );
 });
@@ -154,11 +154,11 @@ app.get('/api/v1/components/:slug/install', async (c) => {
       registryUrl: config().apiBaseUrl,
     },
     steps: [
-      `npx @kartikay-rana/techinject-cli@latest add ${row.slug}`,
+      `npx ui-injector@latest add ${row.slug}`,
       row.dependencies.length ? `pnpm add ${row.dependencies.join(' ')}` : 'no extra dependencies required',
       `themes via @tech-inject/theme (design tokens)`,
     ],
-    installCommand: `npx @kartikay-rana/techinject-cli@latest add ${row.slug}`,
+    installCommand: `npx ui-injector@latest add ${row.slug}`,
   });
 });
 

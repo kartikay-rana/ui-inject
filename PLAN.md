@@ -33,7 +33,7 @@ tech-inject/
 │  ├─ ui/          Reusable component library (strict TS, Radix primitives, cva) — consumed by both apps
 │  ├─ registry/    zod schemas + shared types + validation rules (upload bundle, slug, deps, paths)
 │  ├─ db/          Drizzle schema + client (Neon Postgres) + seed script
-│  └─ cli/         @<scope>/techinject-cli — npx installer + consumer-verify script
+│  └─ cli/         @<scope>/ui-injector — npx installer + consumer-verify script
 ├─ tests/          e2e + consumer-build proofs (drive via scripts in turbo)
 └─ docs-screenshots/  reference-vs-recreation captures (stable baseline at start)
 ```
@@ -101,9 +101,9 @@ Preview isolation (honest): **no code executes on the backend.** The API esbuild
 - Installer/agent for premium: owner supplies a session token via `TECH_INJECT_TOKEN` env / `--token` flag. Copied prompts/commands never embed credentials.
 - Revocation blocks subsequent requests even while signed in (server reads live row each time). Cannot delete already-copied/installed code — documented.
 
-## 7. Installer CLI (`@<scope>/techinject-cli`)
+## 7. Installer CLI (`@<scope>/ui-injector`)
 
-- `npx @<scope>/techinject-cli@latest add <slug> [--registry <url>] [--token …|--token-env TECH_INJECT_TOKEN] [--dir <consumer-dir>]`
+- `npx @<scope>/ui-injector@latest add <slug> [--registry <url>] [--token …|--token-env TECH_INJECT_TOKEN] [--dir <consumer-dir>]`
 - Resolves manifest from API; writes only the bundle files + a `techinject.json` record.
 - Safety: all paths resolved & confined to the target dir (reject `..`, absolute, symlink escapes); refuses silent overwrite (requires `--force`); **never** runs component-supplied shell commands; then prints `npm i <deps>` instructions.
 - Published to npm with the user's NPM_TOKEN (they've confirmed they'll provide it).

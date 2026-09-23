@@ -97,7 +97,7 @@ describe('catalogue API (answers #1/#6)', () => {
     const res = await app.request(`/api/v1/components/${free!.slug}/install`);
     expect(res.status).toBe(200);
     const body = await json<{ installCommand: string; component: { slug: string } }>(res);
-    expect(body.installCommand).toContain('@kartikay-rana/techinject-cli');
+    expect(body.installCommand).toContain('ui-injector');
     expect(body.component.slug).toBe(free!.slug);
   });
 });

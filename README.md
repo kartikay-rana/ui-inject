@@ -17,7 +17,7 @@ packages/ui      the actual components + registry + stories + seed source
 packages/theme   design tokens (single source of truth)
 packages/registry  zod schemas, import audit, agent-prompt builder
 packages/db      Drizzle schema + seed + scrypt/hash security helpers
-packages/cli     @kartikay-rana/techinject-cli — npx installer
+packages/cli     ui-injector — npx installer
 ```
 
 ## Links
@@ -92,7 +92,7 @@ Run the four surfaces individually:
 pnpm --filter @tech-inject/api dev            # API on :3001
 pnpm --filter @tech-inject/catalogue dev      # catalogue on :3010
 pnpm --filter @tech-inject/admin dev          # admin on :3011
-pnpm --filter @kartikay-rana/techinject-cli build
+pnpm --filter ui-injector build
 ```
 
 ## Quality gate (actual results)
@@ -152,9 +152,9 @@ Authenticated installer/agent usage:
 
 ```bash
 # consumer with a premium account's session token
-TECH_INJECT_TOKEN=<session-token> npx @kartikay-rana/techinject-cli add table -r https://api.your-domain.com
+TECH_INJECT_TOKEN=<session-token> npx ui-injector add table -r https://api.your-domain.com
 # or free (no token)
-npx @kartikay-rana/techinject-cli add button -r https://api.your-domain.com
+npx ui-injector add button -r https://api.your-domain.com
 ```
 
 The agent prompt (`GET /api/v1/components/:slug/agent-prompt`) tells the agent to

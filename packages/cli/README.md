@@ -1,4 +1,4 @@
-# @kartikay-rana/techinject-cli
+# ui-injector
 
 Install **Tech Inject** UI components into your React + TypeScript project with
 one command. Components are fetched live from the Tech Inject registry and
@@ -14,21 +14,21 @@ a `*.story.tsx` local story.
 No install needed — run it straight with `npx`:
 
 ```bash
-npx @kartikay-rana/techinject-cli add button
+npx ui-injector add button
 ```
 
 or install it as a dev dependency:
 
 ```bash
-pnpm add -D @kartikay-rana/techinject-cli
+pnpm add -D ui-injector
 ```
 
 ## Usage
 
 ```bash
-techinject-cli add <slug> [--force] [--registry=<url>]
-techinject-cli list
-techinject-cli --help
+ui-injector add <slug> [--force] [--registry=<url>]
+ui-injector list
+ui-injector --help
 ```
 
 ### `add <slug>`
@@ -36,8 +36,8 @@ techinject-cli --help
 Downloads and writes a component into `src/components/<slug>/`:
 
 ```bash
-npx @kartikay-rana/techinject-cli add button
-npx @kartikay-rana/techinject-cli add tag
+npx ui-injector add button
+npx ui-injector add tag
 ```
 
 Each install writes:
@@ -61,7 +61,7 @@ Flags:
 Print the catalogue with access level:
 
 ```bash
-npx @kartikay-rana/techinject-cli list
+npx ui-injector list
 ```
 
 ### Premium components
@@ -70,7 +70,7 @@ Free components install out of the box. Premium ones (e.g. `sidebar`, `table`)
 need an access token from a premium Tech Inject account:
 
 ```bash
-TECH_INJECT_TOKEN=<session-token> npx @kartikay-rana/techinject-cli add table
+TECH_INJECT_TOKEN=<session-token> npx ui-injector add table
 ```
 
 ## Environment

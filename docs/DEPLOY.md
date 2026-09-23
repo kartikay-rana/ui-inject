@@ -88,15 +88,15 @@ curl -s -o /dev/null -w '%{http_code}\n' https://<api-host>/api/v1/admin/compone
    fetches live from `REGISTRY_URL`); unused `@tech-inject/registry` dep
    dropped, default registry points at the deployed API, and
    `prepublishOnly: pnpm build` is set. `npm pack` lists only `dist/`.
-2. Published `@kartikay-rana/techinject-cli@1.0.0` (scoped to the author's npm
+2. Published `ui-injector@1.0.0` (scoped to the author's npm
    username — the `@tech-inject` scope is not ownable on npm). Bump version +
    `npm publish --access public` with a granular token that has "bypass 2FA"
    set; note the registry takes a few minutes to serve the fresh packument.
 3. **Verify on a stranger's machine** (no candidate-local files, no localhost):
    ```bash
    npm init -y && npm i react react-dom @radix-ui/react-checkbox
-   npx @kartikay-rana/techinject-cli add button -r https://<api-host>
-   TECH_INJECT_TOKEN=<session-token> npx @kartikay-rana/techinject-cli add table -r https://<api-host>
+   npx ui-injector add button -r https://<api-host>
+   TECH_INJECT_TOKEN=<session-token> npx ui-injector add table -r https://<api-host>
    # then build/render in that consumer (the CLI defaults to the deployed API,
    # so `-r` is optional)
    ```

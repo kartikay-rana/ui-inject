@@ -1,11 +1,11 @@
 {
-  "name": "@kartikay-rana/techinject-cli",
-  "version": "1.0.1",
+  "name": "ui-injector",
+  "version": "1.0.0",
   "description": "Install Tech Inject components into a consumer React + TypeScript project.",
   "type": "module",
   "main": "./dist/index.js",
   "bin": {
-    "techinject-cli": "./dist/index.js"
+    "ui-injector": "./dist/index.js"
   },
   "files": ["dist"],
   "scripts": {

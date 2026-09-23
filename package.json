@@ -13,7 +13,7 @@
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",
     "test": "turbo run test",
-    "check": "pnpm build && pnpm typecheck && pnpm test && pnpm --filter @kartikay-rana/techinject-cli verify",
+    "check": "pnpm build && pnpm typecheck && pnpm test && pnpm --filter ui-injector verify",
     "format": "prettier --write \"**/*.{ts,tsx,json,md,css}\"",
     "db:generate": "pnpm --filter @tech-inject/db generate",
     "db:push": "pnpm --filter @tech-inject/db push",
