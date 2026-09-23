@@ -18,6 +18,7 @@
     "db:generate": "pnpm --filter @tech-inject/db generate",
     "db:push": "pnpm --filter @tech-inject/db push",
     "db:seed": "pnpm --filter @tech-inject/db seed",
+    "build:vercel-api": "pnpm --filter @tech-inject/api... build",
     "verify:consumer": "pnpm --filter @tech-inject/cli verify"
   },
   "devDependencies": {

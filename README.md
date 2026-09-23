@@ -218,9 +218,10 @@ that it is unavailable, ETA, and the re-publish commit.
 
 1. **Deployment is the one blocked deliverable** — needs a hosting account and
    GitHub repo (flagged in the submission; not presented as deployed). The API
-   is Vercel-ready (single `hono/vercel` function via `apps/api/src/vercel.ts` +
-   `vercel.json`; verified by `apps/api/test/vercel.test.ts`), but the function's
-   esbuild-in-lambda path still needs a live deploy smoke test.
+   is Vercel-ready: zero-config Hono entry (`export default app` in
+   `src/app.ts`) + `pnpm build:vercel-api` (builds the workspace deps whose
+   `dist/` is gitignored) — verified by `apps/api/test/vercel.test.ts`, but the
+   function's esbuild-in-lambda path still needs a live deploy smoke test.
 2. Preview iframe is an opaque-origin sandbox (`sandbox="allow-scripts"`, no
    `allow-same-origin`, no workspace node_modules, no catalogue cookies), but
    scripts still run and can make unauthenticated external requests — no CSP

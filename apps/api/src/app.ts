@@ -30,6 +30,21 @@ import { config } from './env.js';
 export const app = new Hono();
 app.use('*', cors());
 
+/**
+ * Surface failures as JSON (instead of Vercel's generic
+ * FUNCTION_INVOCATION_FAILED) so a misconfigured env is diagnosable in logs.
+ */
+app.onError((err, c) => {
+  console.error('[api] error:', err);
+  if (err instanceof HTTPException) {
+    return c.json({ error: err.message }, err.status);
+  }
+  return c.json({ error: String(err?.message ?? err) }, 500);
+});
+
+/** Zero-config Vercel Hono entry (framework preset default-export detection). */
+export default app;
+
 function bearer(c: Context): string | undefined {
   const h = c.req.header('authorization');
   if (!h || !h.startsWith('Bearer ')) return undefined;

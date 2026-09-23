@@ -31,19 +31,26 @@ until these run against real URLs.
 3. Persistence verification: publish a component, restart, confirm it still
    lists and previews.
 
-## 3. API — one Vercel Function (`hono/vercel`)
+## 3. API — one Vercel Function (Hono zero-config)
 
 All three tiers deploy on Vercel (per PLAN §11); Neon stays the external DB.
 
 1. Create a Vercel project from the same monorepo, Settings → **Root
-   Directory: `apps/api`**.
-2. The serverless entry is `apps/api/src/vercel.ts` (`export default
-   handle(app)` from `hono/vercel`). `apps/api/vercel.json` declares it as a
-   function and rewrites `/api/*` onto it; hono sees the full `/api/v1/...`
-   URL, so no route changes were needed. The local Node server
-   (`src/index.ts`) is unchanged and still used for dev/`pnpm check`.
+   Directory: `apps/api`**. Vercel's Hono framework preset auto-detects the
+   entry via the **default export in `src/app.ts`** (`export default app`)
+   — no `vercel.json` needed (remember to delete the old `functions`/`rewrites`
+   config if you copied it before).
+2. **Build Command: `pnpm build:vercel-api`**
+   (root script = `pnpm --filter @tech-inject/api... build`) — this is
+   **required**: `dist/` is gitignored, so Vercel's fresh clone has no built
+   output for the workspace packages (`@tech-inject/db`, `registry`, `theme`);
+   the recursive filter builds the API **and its workspace deps** in dependency
+   order. Without it you get `FUNCTION_INVOCATION_FAILED` / missing-module at
+   runtime.
 3. Env vars (set in the Vercel dashboard, never committed): `DATABASE_URL`,
    `ADMIN_USERNAME`, `ADMIN_PASSWORD`, `API_BASE_URL=https://<api-host>`.
+   `app.onError()` returns JSON with the message (instead of a generic Vercel
+   500), so a missing/invalid `DATABASE_URL` shows up in the HTTP body + logs.
 4. Serverless notes: preview compiles run esbuild under `os.tmpdir()` and
    resolve bare package imports back into the deployed `node_modules` via an
    esbuild plugin (`apps/api/src/preview.ts`); static keep-imports of
